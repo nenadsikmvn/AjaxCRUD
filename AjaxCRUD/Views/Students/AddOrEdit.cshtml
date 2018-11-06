@@ -1,0 +1,70 @@
+﻿@model AjaxCRUD.Models.Student
+@{
+    ViewBag.Title = "AddOrEdit";
+    Layout = null;
+}
+@using (Html.BeginForm("AddOrEdit", "Students", FormMethod.Post, new { enctype = "multipart/form-data", onSubmit = "return jqPost(this);", data_restUrl = Url.Action("AddOrEdit", "Students", new { id = 0 }) }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.StudentId)
+
+            <div class="col-md-6">
+                <div class="form-group">
+              
+                    <div class="col-md-10">
+                        @Html.LabelFor(model => model.FirstName)
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control input-lg" } })
+                        @Html.ValidationMessageFor(model => model.FirstName)
+                    </div>
+                </div>
+                <div class="form-group">
+                  
+                    <div class="col-md-10">
+                        @Html.LabelFor(model => model.LastName)
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control input-lg" } })
+                        @Html.ValidationMessageFor(model => model.LastName)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.LabelFor(model => model.Age)
+                        @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control input-lg", @Value = ViewBag.Age,  } })
+                        @Html.ValidationMessageFor(model => model.Age)
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                  
+                    <div class="col-md-10">
+                        @Html.LabelFor(model => model.UniversityId)
+                        @Html.DropDownList("UniversityId", null, htmlAttributes: new { @class = "form-control input-lg" })
+                        @Html.ValidationMessageFor(model => model.UniversityId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Submit" class="btn btn-default btn-lg" />
+                        @if (Model.StudentId != 0)
+                        {
+                            <a class="btn btn-success btn-lg" onclick="AddNewTab('@Url.Action("AddOrEdit","Students",new{id=0})',false)"><i class="fa fa-plus"></i> Add new Student</a>
+                        }
+                    </div>
+                </div>
+
+            </div>
+
+             
+
+
+                
+            </div>
+       
+        </div>
+  
+}

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<AjaxCRUD.Models.Grade>
+@{
+    /**/
+
+    ViewBag.Title = "ViewAll";
+    Layout = null;
+}
+
+
+
+
+<table class="table table-striped table-condensed" id="gradeTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Student.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teacher.FirstName)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grade1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Teacher.FirstName)
+                    @Html.DisplayFor(modelItem => item.Teacher.LastName)
+                </td>
+
+                <td>
+                    <a class="btn btn-primary btn-sm" onclick="Edit('@Url.Action("AddOrEdit", "Grades", new { id=@item.GradeId})')"><i class="fa fa-pencil fa-lg"></i></a>
+                    <a class="btn btn-danger btn-sm" onclick="Delete('@Url.Action("Delete", "Grades", new { id=@item.GradeId})')"><i class="fa fa-trash fa-lg"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
