@@ -233,6 +233,7 @@
     </Content>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="App_Data\AjaxCRUD_DB.bacpac" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
